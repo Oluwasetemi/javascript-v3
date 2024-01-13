@@ -1,0 +1,21 @@
+let names = ['judith', 'olumide']
+
+let capitalizedNames = names.map(Capitalize);
+capitalizedNames
+
+let upperCasedNames = names.map(name => name.toUpperCase())
+upperCasedNames
+
+function Capitalize(str) {
+  let firstLetter = str[0];
+  let rest = str.slice(1);
+  return `${firstLetter.toUpperCase()}${rest.toLowerCase()}`;
+}
+
+console.log(Capitalize('jUDith'))
+
+let numbers = [1, 2, 3, 4, 5];
+const double = x => x * x;
+const add5 = x => x + 5;
+
+let result = numbers.map(double).map(add5)

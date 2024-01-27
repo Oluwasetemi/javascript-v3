@@ -28,6 +28,14 @@ const surprise = (...fns) => input => fns.reduce(
   (acc, fn) => fn(acc), input
 )
 
+const surprisePackage = function (...fns) {
+  return function (input) {
+    fns.reduce(function(accFxn, currFxn) {
+      return currFxn(accFxn)
+    }, input)
+  }
+}
+
 const toUpperCase = str => str.toUpperCase()
 const removeSpaces = str => str.replace(/\s/g, "")
 const addExclamation = str => str + "!"

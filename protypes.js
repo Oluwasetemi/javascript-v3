@@ -82,7 +82,10 @@ function add(a, b) {
   return a + b
 }
 
+// Closure - access to a closed varible during currying
 function addTrouble(a) {
+  // a is only supposed to be accessible within the scope of addTrouble
+  // but because of closure, it is accessible to the returned function - closed variable
   return function(b) {
     return a + b
   }

@@ -1,4 +1,8 @@
 // modules require, import and export
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(json => console.log(json))
+
 const axios = require('axios');
 
 const url = 'https://jsonplaceholder.typicode.com/todos/1';
@@ -68,7 +72,7 @@ let [,,,twe] = Object.entries(newPerson)
 twe
 Array.from({ length: 4 }).map((val, index) => index + 1).sort((a, b) => a - b)
 
-
+// HOF
 const surprisePackage = function (...fns) {
   console.log(fns)
   return function (input) {

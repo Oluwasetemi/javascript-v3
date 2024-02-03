@@ -1,8 +1,10 @@
 console.log('Hello from math.js');
 
-console.log(window)
+// js
+// exports.PI = 22/7;
+// mjs
 export const PI = 22/7;
-// window.METHOD = () => {
+// exports.METHOD = () => {
 //   console.log('Hello from math.js');
 // };
 
@@ -28,6 +30,7 @@ const math = {
   },
 };
 
-export default math;
-
+// js (require js)
 // module.exports = math;
+// es6 (import/export) mjs
+export default math;

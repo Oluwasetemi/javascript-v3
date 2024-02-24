@@ -15,7 +15,8 @@ $('#app').innerHTML = `
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
     <h1>Hello Vite!</h1>
-    <div class="card">
+    <input data-testid="Name" type="text" name="name" id="name" />
+    <div class="card" my="danger">
       <button id="counter" type="button"></button>
     </div>
     <p class="read-the-docs">
@@ -90,3 +91,46 @@ console.log(counter.matches('button'))
 
 // closest - element.closest('css selector') - returns the first ancestor of the current element (or the current element itself) which matches the selector
 counter.closest('div').style.backgroundColor = 'red'
+
+// Node Properties(nodeValue, nodeName, nodeType, tagName) CharacterData  , Attributes and Properties, Modifying the document, Styles and Classes
+
+let content = document.body.firstChild.nextSibling.data
+// console.log(content)
+
+// attribute (CCRUD)
+
+// classes
+// classList() add, toggle, remove DOMTokenList, className, attribute(CCRUD)
+
+// styles
+// element.style = 'color: red;'
+// element.setAttribute('style', 'color: red;')
+
+// NOT Possible except you declare it first in the html and update it later
+// $('.card').my = 'my value'
+
+// dataset
+// data-* Attributes
+console.log($('input').dataset) // DOMStringMap { testid: "Name" }
+console.log($('input').dataset.testid)
+
+
+
+// document.createElement('element', options{is?}) - creates a new element
+const newDiv = document.createElement('div')
+
+// attribute
+// class
+// style
+
+// textContent, innerHTML
+
+// event
+
+// insertion method - append, prepend, before, after (before, prepend), replaceWith
+// newDiv
+// allow us to insert (text, element, comment)
+// div.before(newDiv) - previousSibling
+// div.prepend(newDiv) - firstChild
+// div.append(newDiv) - lastChild
+// div.after(newDiv) - nextSibling

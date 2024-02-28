@@ -56,7 +56,13 @@ h1 {
 }
 
 .card {
-  padding: 2em;
+  margin-block-start: 10px;
+  padding: 1em;
+  border: 20px solid;
+  overflow: auto;
+  /* width and height */
+  width: 300px;
+  height: 20px;
 }
 
 .read-the-docs {

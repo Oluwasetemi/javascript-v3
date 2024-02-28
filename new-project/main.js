@@ -67,18 +67,18 @@ setupCounter($('#counter'));
 
 const table = $('table')
 const row = table.rows
-console.log(row)
-console.log(row[0])
+// console.log(row)
+// console.log(row[0])
 
 // search getElement*, querySelector*, getElementsBy*(TagName, ClassName, Name) return a live collection
 
 // difference
 let buttonApp = app.querySelector('button')
-console.log('app button', buttonApp)
+// console.log('app button', buttonApp)
 
 // const app = document.getElementById('app')
 // let app = 5
-console.log(app)
+// console.log(app)
 // querySelectorAll('css selectors') - returns a NodeList
 // querySelector('css selectors') - returns the first element that matches the selector
 
@@ -87,7 +87,7 @@ console.log(app)
 
 // matches - element.matches('css selector') - returns a boolean
 const counter = $('#counter')
-console.log(counter.matches('button'))
+// console.log(counter.matches('button'))
 
 // closest - element.closest('css selector') - returns the first ancestor of the current element (or the current element itself) which matches the selector
 counter.closest('div').style.backgroundColor = 'red'
@@ -111,19 +111,24 @@ let content = document.body.firstChild.nextSibling.data
 
 // dataset
 // data-* Attributes
-console.log($('input').dataset) // DOMStringMap { testid: "Name" }
-console.log($('input').dataset.testid)
+// console.log($('input').dataset) // DOMStringMap { testid: "Name" }
+// console.log($('input').dataset.testid)
 
 
 
 // document.createElement('element', options{is?}) - creates a new element
 const newDiv = document.createElement('div')
+newDiv.on('click', () => {
+  console.log('click')
+  newDiv.remove()
+})
 
 // attribute
 // class
 // style
 
 // textContent, innerHTML
+newDiv.textContent = 'Modifying the DOM'
 
 // event
 
@@ -131,6 +136,55 @@ const newDiv = document.createElement('div')
 // newDiv
 // allow us to insert (text, element, comment)
 // div.before(newDiv) - previousSibling
+// app.before(newDiv)
 // div.prepend(newDiv) - firstChild
-// div.append(newDiv) - lastChild
-// div.after(newDiv) - nextSibling
+// app.prepend(newDiv)
+// div.append (newDiv) - lastChild
+// app.append (newDiv)
+// app.after(newDiv) - nextSibling
+app.after(newDiv)
+
+// insertAdjacentHTML/Text/Element(position, element)
+// position - beforebegin, afterbegin, beforeend, afterend
+
+app.insertAdjacentHTML('beforebegin', newDiv.outerHTML)
+app.insertAdjacentElement('beforebegin', newDiv)
+// app.insertAdjacentHTML('afterbegin', '<div>afterbegin</div>')
+// app.insertAdjacentHTML('beforeend', '<div>beforeend</div>')
+// app.insertAdjacentHTML('afterend', '<div>afterend</div>')
+
+
+// remove()
+// element.remove()
+
+// cloneNode
+
+// DocumentFragment
+const ul = document.createElement('ul')
+
+function getListContent() {
+  const fragment = new DocumentFragment()
+
+  for (let i = 0; i < 10; i++) {
+    const li = document.createElement('li')
+    li.textContent = `list item ${i}`
+    fragment.append(li)
+  }
+
+  return fragment
+}
+
+// ul.innerHTML = getListContent()
+ul.append(getListContent())
+
+app.append(ul)
+
+// client, offset, scroll
+// clientWidth, clientHeight, clientTop, clientLeft
+// offsetWidth, offsetHeight, offsetTop, offsetLeft, offsetParent(nearest positioned anscestor)
+// scrollTop, scrollLeft, scrollWidth, scrollHeight
+
+console.log(getComputedStyle($('.card')))
+console.dir($('.card'))
+
+// functions/method manipulate scroll programmatically using javascript

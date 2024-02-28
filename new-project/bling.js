@@ -12,6 +12,10 @@ Node.prototype.on = window.on = function (name, fn) {
   this.addEventListener(name, fn);
 }
 
+// prototype(destiny) || __proto__ [[Prototype]] (source|DNA)
+
+// setPrototypeOf and getPrototypeOf
+
 NodeList.prototype.__proto__ = Array.prototype;
 
 NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {

@@ -1,4 +1,4 @@
-# JavaScript On The Web
+# Events and Forms
 
 * Browser environment, specs
 * DOM tree
@@ -106,4 +106,3 @@ Relative to the document – elem.getBoundingClientRect() plus the current page 
 ## Reference Links
 
 * [JavaScript.info](https://javascript.info/document)
-* [Understanding the geometry by solving a problem](https://stackblitz.com/edit/vitejs-vite-qpxi27)

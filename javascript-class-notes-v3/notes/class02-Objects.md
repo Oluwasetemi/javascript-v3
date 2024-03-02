@@ -5,7 +5,7 @@
 * Object method and this
 * constructor: `new`
 * Optional chaining
-* Symbol type
+* Symbol type (not yet done)
 * Object to primitive conversion
 
 ## Deeper with Datatypes
@@ -15,23 +15,23 @@
 * Arrays
 * Array methods
 * Iterables
-* Maps and set
-* WeakMap and WeakSet
+* Maps and set (not yet done)
+* WeakMap and WeakSet (not yet done)
 * Object.keys, values, entries
 * Destructuring
-* Date and time
-* JSON methods and property getter & setters
-* Property flags and descriptors
+* Date and time (not yet done)
+* JSON methods and property getter & setters (not yet done)
+* Property flags and descriptors (not yet done)
 * Rest parameter and spread operator
 * Variable scope and closure
 * Global, function object, new function syntax
 * Forwarding with call, apply and function binding
-* Decorators
+* Decorators (not yet done)
 * Prototypes and inheritance
 * Native prototypes and F.prototypes
 * Prototype methods, object without `__proto__`
 * Error handling
-* Classes, Promises, async/await, Modules and generators
+* Classes (not yet done), Promises, async/await, Modules and generators (not yet done)
 
 ### Reference Links
 

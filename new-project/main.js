@@ -6,6 +6,10 @@ import './style.css';
 import '/bling.js';
 import viteLogo from '/vite.svg';
 
+console.log($$('div'))
+
+
+
 $('#app').innerHTML = `
   <div name="counter-div">
     <a href="https://vitejs.dev" target="_blank">
@@ -14,7 +18,7 @@ $('#app').innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1>Hello Vite!</h1>
+    <h1 onclick="learnToPickYourFight()" >Hello Vite!</h1>
     <input data-testid="Name" type="text" name="name" id="name" />
     <div class="card" my="danger">
       <button id="counter" type="button"></button>
@@ -263,3 +267,15 @@ console.log(getComputedStyle($('.card')))
 console.dir($('.card'))
 
 // functions/method manipulate scroll programmatically using javascript
+
+// events
+// different events that we have - mouse(click, dbclick, contextmenu), keyboard(keydown, keyup), form(submit, change, input, focus), document(DOMContentLoaded, loaded), window(loaded), css(transitionend), custom
+
+// event handler
+// 1. html attribute - <button onclick="handleClick()">Click me</button>
+// 2. dom property - button.onclick = handleClick
+// 3. addEventListener - button.addEventListener('click', handleClick)
+
+// event object
+// bubbling, capturing, delegation,
+// form (submit)

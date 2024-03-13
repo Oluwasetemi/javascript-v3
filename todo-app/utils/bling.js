@@ -18,9 +18,11 @@ Node.prototype.on = window.on = function (name, fn) {
 
 NodeList.prototype.__proto__ = Array.prototype;
 
-NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
+//TODO: fix the addEventListener accepting the third parameter
+NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn, options) {
   this.forEach(function (elem, i) {
-    elem.on(name, fn);
+    elem.on(name, fn, options);
+
   });
 }
 

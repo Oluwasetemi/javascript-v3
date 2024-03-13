@@ -5,6 +5,16 @@ export function setupCounter(element) {
     element.innerHTML = `count is ${counter}`
   }
   // console.log(element.on)
-  element.on('click', () => setCounter(counter + 1))
+
+  const handler = (event) => {
+    // event.stopPropagation()
+    console.log(event) // event object
+    console.log(event.target) // element
+    setCounter(counter + 1)
+  }
+
+  // element.on('click', handler, { once: true })
+
+  element.addEventListener('click', handler, { once: true})
   setCounter(0)
 }

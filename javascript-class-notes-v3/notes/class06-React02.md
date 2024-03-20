@@ -1,122 +1,152 @@
-# class Note - 30th August 2023
+# class Note - to be decided
 
-## Review of JSX
+## Event Handlers
 
-- [check this tool out](https://transform.tools/html-to-jsx). Please convert your scissors project from HTML to react, use a PR approach to merge the react to the main branch.
-- expression slots
-- difference from HTML
-  - className
-  - htmlFor
-  - lowercase HTML tags
-  - closing of the self closing tags
-  - lowercase attributes
-- common mistakes or Gotchas
-  - whitespace
-  - image rendering
+```jsx
+// 🚫 Invalid: calls the function without 'dark'
+<button onClick={setTheme}>Toggle theme</button>
+```
 
-> Read More about [Scheduling API](https://javascript.info/settimeout-setinterval)
+```jsx
+// 🚫 Invalid: calls the function right away
+<button onClick={setTheme('dark')}>Toggle theme</button>
+```
 
-## [Review of Last Class - Lifecycle methods](https://stackblitz.com/edit/vitejs-vite-cdfpaj?file=src%2Fmain.jsx)
+```JSX
+// ✅ Valid:
+<button onClick={() => setTheme('dark')}>
+  Toggle theme
+</button>
+```
 
-![Mount](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414630/altschool/zbibflubdqctr97uypls.png)
-![Trigger](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414607/altschool/lc5f390mnj1ifqslmjka.png)
-![Render](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414567/altschool/fhcffw6s7kiymvgsm5sf.png)
-![Commit](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414598/altschool/jzsdiuxrcghj57qp2okt.png)
+> NB - We're creating a brand-new anonymous arrow function, `() => setTheme('dark')`, and passing it to React. When the user clicks the button, the function will run, and the code inside the function is executed (setTheme('dark')).
 
-[Read More about life cycle on React.dev](https://react.dev/learn/render-and-commit)
+Do you understand the bind, call and apply in JavaScript?
 
-### Here is a summary explanation of the lifecycle
+```jsx
+// ✅ Valid:
+<button onClick={setTheme.bind(null, 'dark')}>Toggle theme</button>
+```
 
-![Explanation](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414557/altschool/vhpjg99swxpmazho5wxe.png)
+## The useState Hook
 
-Step 0: Mount with ReactDOM
-Step 1: Trigger a render
+- Naming convention and destructuring
+- Initial or default value(a value or a function that resolves to a value)
 
-- It’s the component’s initial render.
-- The component’s (or one of its ancestors’) state has been updated.
+```jsx
+const [count, setCount] = React.useState(0);
 
-Step 2: React renders your components
-Step 3: React commits changes to the DOM
+const [count, setCount] = React.useState(() => {
+  return window.localStorage.getItem('saved-count');
+});
+```
 
-<!-- markdownlint-disable no-inline-html -->
-<details>
-  <summary>Summary</summary>
-  <div>
-    <p>
-    Any screen update in a React app happens in three steps:
-    </p>
-    <ul>
-      <li>Trigger</li>
-      <li>Render</li>
-      <li>Commit</li>
-    </ul>
-    <p>You can use Strict Mode to find mistakes in your components.</p>
-    <p>React does not touch the DOM if the rendering result is the same as last time</p>
-  </div>
-</details>
+- Core React Loop
+- Rendering vs. Painting (When React does change a part of the DOM, the browser will need to re-paint. A re-paint is when the pixels on the screen are re-drawn because a part of the DOM was mutated. This is done natively by the browser when the DOM is edited with JavaScript (whether by React, Angular, jQuery, vanilla JS, anything).)
+- Asynchronous Updates
 
-## components
+## Forms
 
-1. Props - function, string, numbers, arrays, object
-   - default values ??
+- Data Binding
+- OnClick
+- Form Controls
 
-     ```jsx
-     // another example of default value
-     function FriendlyGreeting({ name = 'there' }) {
-       return (
-         <p>
-           Hey {name}
-         </p>
-       );
-     }
-     ```
+## Props Vs. State
 
-   - Fragment
-   - Children
-   <!-- classwork: create a Button component (borderColor, color, Children) (themeColor, Children) (status, children) -->
-2. Props drilling (co-locating the state in the right component)
+“Props” is short for “properties”. At a micro level, they're like the attributes we place on HTML elements, like class or href.
 
-## Iteration; Rendering a list; Understanding the need for a key on each list
+Examine the Button Component Code:
 
-> NB. Keys work with React.Fragment and not <>(shorthand)
+```jsx
+// App.jsx
+<div className="actions">
+  <Button variant="secondary">Cancel</Button>
+  <Button variant="primary">Confirm</Button>
+</div>;
 
-## Conditional Rendering
+// Button.jsx
+import React from 'react';
 
-1. if
-2. &&
-3. ternary
-4. showing and hiding
+import styles from './Button.module.css';
 
-## Styling
+function Button({ variant, children, isEnabled }) {
+  return (
+    <button className={`${styles.wrapper} ${styles[variant]}`} disabled={!isEnabled}>
+      {children}
+    </button>
+  );
+}
 
-1. inline Styling
-2. CSS Modules
-3. Styled Components
+export default Button;
+```
 
-## Class Take Home Project and Assignments
+```css
+/* Button.module.css */
+.wrapper {
+  padding: 8px 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 200ms, color 200ms;
+  cursor: pointer;
+}
 
-- Take Home Project ([Star](https://stackblitz.com/edit/vitejs-vite-3f4sce?file=src%2FStarRating.jsx), [Grid](https://github.com/Oluwasetemi/Grid-AltSchoolClassWork)). Solution Image ([Star](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414531/altschool/ac1zhvoquhdtai5hr8er.png)). ([Grid](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414503/altschool/oxtmohuvcsswye05wppl.png))
+.primary {
+  background-color: hsl(245deg 100% 60%);
+  color: white;
+}
 
-Solution Image
-![Star](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414531/altschool/ac1zhvoquhdtai5hr8er.png)
-![Grid](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414503/altschool/oxtmohuvcsswye05wppl.png)
+.secondary {
+  background-color: transparent;
+  color: hsl(15deg 10% 30%);
+}
 
-- Assignments
+.primary:hover {
+  background-color: hsl(245deg 75% 50%);
+}
 
-  ![Build This](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414546/altschool/ecmzlfp9cgirsp49pogd.png)
-  ![Guide](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414582/altschool/rvusio6qu56lboje9un5.png)
+.secondary:hover {
+  background-color: hsl(15deg 60% 90% / 0.5);
+  color: black;
+}
+```
 
-  [Building this out](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414546/altschool/ecmzlfp9cgirsp49pogd.png). Use this [image as a guide to each button](https://res.cloudinary.com/drnqdd87d/image/upload/v1693414582/altschool/rvusio6qu56lboje9un5.png). (source the icons from `react-feather` npm package). Add an effect that allows the page title to be updated with the latest count. ([Submit before next class](https://forms.gle/nt2j6fSHJFuToktq9))
+Props allow us to customize the behaviour of a given component, so that the exact same component can do different things in different scenarios.
 
-## BONUS: [Converting an Old react project with classes to functions](https://stackblitz.com/edit/react-lifting-state-up-intro?file=index.js)
+Props are the inputs to our components, like arguments passed to a function.
 
-TODO: [Fix the errors in this project after migrating to the latest react and reactDOM version, change the class to function.](https://stackblitz.com/edit/react-egghead-stopwatch?file=index.js)
+## Complex state
 
-[SOLUTION TO THE TODO](https://stackblitz.com/edit/react-egghead-stopwatch-senn6m?file=index.js)
+Working Arrays, Objects as the default state will require us to understand the concept of Mutation.
 
-> *NEXT CLASS WILL FOCUS ON STATE AND HOOKS*
+### For Arrays
 
-<!-- CURRENT ASSIGNMENTS -->
-<!-- javascript pick 2 from 3 question that has test midnight of 31st August -->
-<!-- Circle Assignment - JavaScript Calculator(PR link as the evidence during class defense) (16th September) -->
-<!-- Convert our scissors html to React (PR) -->
+1. Create a new array
+2. Modify that new array
+3. Set the new array into state
+
+### For Objects
+
+Same approach works of the Object, with spread or Object.assign, modify and set me object into state.
+
+Using the Prev state value is the Dispatch setState action is another important option when dealing with complex state.
+
+## Lifting State Up
+
+## The useId Hook
+
+## Rules of Hooks
+
+## Immutability
+
+## Refs
+
+## Side Effects
+
+## Custom Hooks
+
+## Data Fetching
+
+## Memoization

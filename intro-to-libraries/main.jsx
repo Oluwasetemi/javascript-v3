@@ -1,10 +1,9 @@
-import $ from 'jquery';
 import './style.css';
 
-console.log($('#app'));
+// console.log($('#app'));
 
-console.log(React);
-console.log(ReactDOM);
+// console.log(React);
+// console.log(ReactDOM);
 
 // $('#app')[0].innerHTML = `
 //   <div>
@@ -26,36 +25,54 @@ console.log(ReactDOM);
 
 // setupCounter(document.querySelector('#counter'))
 // React.createElement('p', null, 'Hello World')
+
+function SmallerComponent(props) {
+  return (
+    <p id={props.id} className={props.className} style={props.style}>
+      {props.children}
+    </p>
+  );
+}
+
 const Hello = (props) => {
   const stateSetter = React.useState(0);
   const [count, setCount] = stateSetter;
-  const handClick = () => console.log(setCount(count + 1))
-  console.log(props);
+  const handClick = () => console.log(setCount(count + 1));
+  // console.log(props);
   const { className, id, greetings, name, style } = props;
-  console.log({ className, id, greetings, name });
+  // console.log({ className, id, greetings, name });
+
   return (
     <>
+      {SmallerComponent({ id, className, style: { ...style, color: 'green' }, children: 'Hello'})}
+      <SmallerComponent id={id} className={className} style={{...style, color: 'white'}}>
+        <span>Hello</span>
+      </SmallerComponent>
       <p id={id} className={className} style={style}>
         Hello <br /> Good {greetings}
       </p>
-      <p id={id} className={className} style={style}>
-        Hello <br /> Good {greetings}
-      </p>
-      <button onClick={handClick} >{count}</button>
+      <button onClick={handClick}>{count}</button>
     </>
   );
 };
+
+// Hello({ greetings: 'morning', name: 'ojo' });
+
 // const div2 = () => <p>Hello AltSchool</p>
 
 // console.log(<Hello greetings='morning' name='ojo' id='id' className="dangerous" />);
 
-ReactDOM.render(
-  <Hello
+const toBeRendered = <Hello
     greetings="morning"
     name="ojo"
     id="id"
     className="dangerous"
     style={{ color: 'red', border: '1px solid ', padding: '5px' }}
-  />,
+  />
+
+console.log(toBeRendered);
+
+ReactDOM.render(
+  toBeRendered,
   document.getElementById('app'),
 );
